@@ -7,6 +7,12 @@ use Auth;
 
 class SessionsController extends Controller
 {
+    public function __contruct()
+    {
+      $this->middleware('guest',[
+        'only'=>['create']
+      ]);
+    }
     public function create()
     {
         return view('sessions.create');
@@ -34,7 +40,14 @@ class SessionsController extends Controller
     public function destroy()
     {
         Auth::logout();
-        session()->flash('success',"您已成功退出！");
-        return redirect('login');
+           session()->flash('success',"您已成功退出！");
+           $fallback = route('users.show', Auth::user());
+           return redirect()->intended($fallback);
+       } else {
+           session()->flash('danger', '很抱歉，您的邮箱和密码不匹配');
+           return redirect()->back()->withInput();
+       }
     }
+
+
 }
