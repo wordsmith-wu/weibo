@@ -49,4 +49,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Status::class);
     }
+    public function translations()
+    {
+        return $this->hasMany(Translation::class);
+    }
 }

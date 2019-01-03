@@ -8,17 +8,17 @@
       @include('shared._user_info', ['user' => $user])
     </section>
     <section class="status">
-    	@if ($statuses->count()>0)
-    		<ul>
-    			@foreach ($statuses as $status)
-    				@include('statuses._status')
+    	@if ($translations->count()>0)
+    		<ul class="list-unstyled">
+    			@foreach ($translations as $translation)
+    				@include('translations._translation')
     			@endforeach
     		</ul>
     		<div class="mt-5">
-    			{!! $statuses->render() !!}
+    			{!! $translations->render() !!}
     		</div>
     	@else
-    		<p>没有数据！</p>
+    		<p>暂时有翻译数据！</p>
     	@endif
     </section>
   </div>
