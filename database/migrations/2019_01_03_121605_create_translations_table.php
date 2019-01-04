@@ -18,7 +18,7 @@ class CreateTranslationsTable extends Migration
             $table->integer('user_id')->index();
             $table->index(['created_at']);
             $table->timestamps();
-            $table->integer('usagecount');
+            $table->integer('usagecount')->default(0);
             $table->time('lastusagedate');
             $table->integer('changeid')->default(1)->index();
             $table->text('chinese');
