@@ -53,4 +53,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Translation::class);
     }
+
+    public function feed()
+    {
+        return $this->statuses()->orderBy('created_at','desc');
+    }
+
+    public function transfeed()
+    {
+        return $this->translations()->orderBy('created_at','desc');
+    }
+
 }

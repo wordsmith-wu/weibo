@@ -9,5 +9,11 @@
 		<p></p>
 		{{$translation->english}}
 	</div>
-
+	@can('destory',$translation)
+		<form action="{{route('translations.destroy',$translation->id)}}" method="POST" onsubmit="return confirm('您确定要删除本条翻译吗？')">
+			{{csrf_field()}}
+			{{method_field('DELETE')}}
+			<button type="submit" class="btn btn-sm btn-danger">删除</button>
+		</form>
+	@endcan
 </li>
