@@ -31,3 +31,8 @@ Route::delete('logout', 'SessionsController@destroy')->name('logout');
 Route::get('signup/confirm/{token}','UsersController@confirmEmail')->name('confirm_email');
 Route::resource('statuses','statusesController',['only'=>['store','destroy']]);
 Route::resource('translations','translationsController');
+
+Route::get('/users/{user}/followings','UsersController@followings')->name('users.followings');
+Route::get('users/{user}/followers','UsersController@followers')->name('users.followers');
+Route::post('/users/followers/{user}','FollowersController@store')->name('followers.store');
+Route::delete('/users/followers/{user}','FollowersController@destroy')->name('followers.destroy');
